@@ -1,12 +1,7 @@
 
 import 'package:flutter/material.dart';
-  import 'package:http/http.dart' as http;
 class Chat extends StatefulWidget {
   Chat();
-  Future<http.Response> fetchAlbum() {
-  return http.get('pm.tada.team');
-}
-//'https://jsonplaceholder.typicode.com/albums/1'
   @override
   _ChatState createState() => _ChatState();
 }
@@ -21,7 +16,6 @@ class _ChatState extends State<Chat> {
         appBar: AppBar(
         title: const Text("Chat"),
       ),
-      
        body: Center(
 child:Column(
          mainAxisAlignment: MainAxisAlignment.center,

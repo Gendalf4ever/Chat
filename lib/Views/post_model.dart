@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 class Post {
   final String userName;
   final String userMessage;
-
 Post({
   @required this.userName,
   @required this.userMessage,
