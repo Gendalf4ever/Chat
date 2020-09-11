@@ -39,8 +39,8 @@ class _EntranceState extends State<Entrance> {
              userName = inputcontroller.text;
              if (inputcontroller.text == null) {
               userName = 'LazyUser';
-             }
-           });
+             }      
+             });
          },
        ),),
          
