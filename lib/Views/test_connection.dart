@@ -6,30 +6,26 @@ import 'package:http/http.dart' as http;
 
 Future<Album> fetchAlbum() async {
   final response =
-      await http.get('https://jsonplaceholder.typicode.com/albums/1');
+      await http.get('https://pm.tada.team');
 
   if (response.statusCode == 200) {
-    // If the server did return a 200 OK response,
-    // then parse the JSON.
     return Album.fromJson(json.decode(response.body));
   } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
     throw Exception('Failed to load album');
   }
 }
 
 class Album {
   final int userId;
-  final int id;
+  //final int id;
   final String title;
 
-  Album({this.userId, this.id, this.title});
+  Album({this.userId,  this.title});
 
   factory Album.fromJson(Map<String, dynamic> json) {
     return Album(
       userId: json['userId'],
-      id: json['id'],
+      //id: json['id'],
       title: json['title'],
     );
   }
@@ -73,8 +69,6 @@ class _MyAppState extends State<MyApp> {
               } else if (snapshot.hasError) {
                 return Text("${snapshot.error}");
               }
-
-              // By default, show a loading spinner.
               return CircularProgressIndicator();
             },
           ),
