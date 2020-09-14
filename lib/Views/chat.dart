@@ -1,16 +1,18 @@
-
 import 'package:flutter/material.dart';
 import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 class Chat extends StatefulWidget {
-  Chat();
-  final WebSocketChannel channel = IOWebSocketChannel.connect('wss://pm.tada.team/');
+ String value;
+  Chat({Key key, @required this.value}): super (key: key);
+   WebSocketChannel channel = IOWebSocketChannel.connect('wss://pm.tada.team/');
   @override
-  _ChatState createState() => _ChatState();
+  _ChatState createState() => _ChatState(value);
 }
 
 class _ChatState extends State<Chat> {
+  String value;
     final inputcontroller = TextEditingController();
+  _ChatState(this.value);
   List<String> messageList = [];
   @override
   Widget build(BuildContext context) {
@@ -43,7 +45,7 @@ body: Container(
                   if (inputcontroller.text.isNotEmpty){
                     print(inputcontroller.text);
                     setState(() {
-                       messageList.add("userName");
+                       messageList.add(value + ':');
                        messageList.add(inputcontroller.text);
                     });                 
                     inputcontroller.text = '';

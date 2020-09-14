@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'chat.dart';
 class Entrance extends StatefulWidget {
   Entrance();
 
@@ -49,7 +50,10 @@ class _EntranceState extends State<Entrance> {
          
    RaisedButton(
      child: Text("Enter"),
-     onPressed:() => Navigator.pushNamed(context, '/chat') ,
+     onPressed:() => Navigator.of(context).push(MaterialPageRoute(
+      builder: (context)=> Chat(value : userName),
+     )
+     ) ,
      
    )
 

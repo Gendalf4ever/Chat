@@ -1,4 +1,4 @@
-import 'package:Chat/Views/chat.dart';
+
 import 'package:flutter/material.dart';
 import './Views/Entrance.dart';
 
@@ -19,7 +19,7 @@ class Main extends StatelessWidget {
          home:Entrance(),
          routes: {
            '/entrance': (context) => Entrance(),
-           '/chat': (context) => Chat(),
+           //'/chat': (context) => Chat(),
          },
     );
   }
