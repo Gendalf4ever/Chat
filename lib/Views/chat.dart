@@ -1,61 +1,87 @@
 
 import 'package:flutter/material.dart';
+import 'package:web_socket_channel/io.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
 class Chat extends StatefulWidget {
   Chat();
+  final WebSocketChannel channel = IOWebSocketChannel.connect('wss://pm.tada.team/');
   @override
   _ChatState createState() => _ChatState();
 }
 
 class _ChatState extends State<Chat> {
-    TextEditingController inputcontroller = new TextEditingController();
-      String message;
-    String nickname;
-        @override
+    final inputcontroller = TextEditingController();
+  List<String> messageList = [];
+  @override
   Widget build(BuildContext context) {
-      return Scaffold(
-        appBar: AppBar(
-        title: const Text("Chat"),
-      ),
-       body: Center(
-child:Column(
-         mainAxisAlignment: MainAxisAlignment.center,
-       children: <Widget>[
-         new Container(
-              child: Align(alignment: Alignment.topCenter,
-              child: new Container(
-                alignment: Alignment.topRight,
-                child: Text('$message'),
-                )  
+    return Scaffold(
+body: Container(
+      child: Column (
+        children: <Widget>[
+          Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Row(
+            children: <Widget>[
+              Expanded(
+                child: TextField(
+                  controller: inputcontroller,
+                  decoration: InputDecoration(
+                   border: OutlineInputBorder(),
+                    hintText: 'Message'
+                  ),
+                  style: TextStyle(fontSize: 20),
+                ),
               ),
-            ),
-         new Container(
-           child:Align(alignment: Alignment.bottomRight,
-          child: new TextField(
-             controller: inputcontroller,
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              hintText: 'Message',
-             // alignment: Alignment.bottomCenter
-            ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: RaisedButton(
+                  child: Text('Send',
+                  style: TextStyle(fontSize: 20)
+                ),
+                onPressed: (){
+                  if (inputcontroller.text.isNotEmpty){
+                    print(inputcontroller.text);
+                    setState(() {
+                       messageList.add(inputcontroller.text);
+                    });                 
+                    inputcontroller.text = '';
+                  }
+                },
+              ),
+              )
+            ],
           ),
-           )
-         ),
-        
-          RaisedButton (
-              child: Text("Send"), onPressed: (){
-                setState(() {
-                  message = inputcontroller.text;
-                  inputcontroller.clear();
-               }) ;     
-              },
-            ),
-           
-           // Text("$userName")
-       ],
-       )
-       )
-       );
+          
+          ),
+          Expanded(
+            child: getMessageList()
+            )
+        ],
+      )
+    ) 
+    );
   }
+    
+    
+  ListView getMessageList(){
+  List<Widget> listWidget = [];
+  for (String message in messageList){
+    listWidget.add(ListTile(
+     title: Container(
+       child: Padding(
+         padding: const EdgeInsets.all(8.0),
+         child: Text(
+           message,
+            style: TextStyle(fontSize: 22)
+         ),
+       ),
+     )
+    )
+    ); 
+}
+return ListView(
+  children:listWidget,
+);
 }
 
-
+}

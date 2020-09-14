@@ -1,7 +1,7 @@
+import 'package:Chat/Views/chat.dart';
 import 'package:flutter/material.dart';
 import './Views/Entrance.dart';
-import './Views/chat.dart';
-import './websocket.dart';
+
 void main() {
  runApp(Main());
 }
@@ -16,7 +16,7 @@ class Main extends StatelessWidget {
         primarySwatch: Colors.red,
       ),
       debugShowCheckedModeBanner: false,
-         home:Websocket(),
+         home:Entrance(),
          routes: {
            '/entrance': (context) => Entrance(),
            '/chat': (context) => Chat(),

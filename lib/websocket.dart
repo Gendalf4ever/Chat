@@ -14,11 +14,12 @@ class _WebsocketState extends State<Websocket> {
   List<String> messageList = [];
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Scaffold(
+body: Container(
       child: Column (
         children: <Widget>[
           Padding(
-          padding: EdgeInsets.all(10.0),
+          padding: EdgeInsets.all(8.0),
           child: Row(
             children: <Widget>[
               Expanded(
@@ -28,7 +29,7 @@ class _WebsocketState extends State<Websocket> {
                    border: OutlineInputBorder(),
                     hintText: 'Message'
                   ),
-                  style: TextStyle(fontSize: 22),
+                  style: TextStyle(fontSize: 20),
                 ),
               ),
               Padding(
@@ -57,8 +58,11 @@ class _WebsocketState extends State<Websocket> {
             )
         ],
       )
+    ) 
     );
   }
+    
+    
   ListView getMessageList(){
   List<Widget> listWidget = [];
   for (String message in messageList){
