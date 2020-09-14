@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 class Entrance extends StatefulWidget {
   Entrance();
 
@@ -36,21 +35,33 @@ class _EntranceState extends State<Entrance> {
          //onPressed:() => Navigator.pushNamed(context, '/chat') , 
          onPressed: (){
            setState(() {
+             
              userName = inputcontroller.text;
              if (inputcontroller.text == null) {
               userName = 'LazyUser';
              }      
-             });
+            Navigator.pushNamed(context, '/chat') ;
+             } // setState
+             );
          },
-       ),),
+       ),
+       ),
          
    RaisedButton(
      child: Text("Enter"),
      onPressed:() => Navigator.pushNamed(context, '/chat') ,
+     
    )
+
+   
        ]
        )
        )
+       
     );
+  
+  
   }
+
+  
 }

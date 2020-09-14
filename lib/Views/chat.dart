@@ -18,6 +18,7 @@ class _ChatState extends State<Chat> {
 body: Container(
       child: Column (
         children: <Widget>[
+         
           Padding(
           padding: EdgeInsets.all(8.0),
           child: Row(
@@ -42,6 +43,7 @@ body: Container(
                   if (inputcontroller.text.isNotEmpty){
                     print(inputcontroller.text);
                     setState(() {
+                       messageList.add("userName");
                        messageList.add(inputcontroller.text);
                     });                 
                     inputcontroller.text = '';
