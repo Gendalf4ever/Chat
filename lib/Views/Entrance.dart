@@ -36,11 +36,12 @@ class _EntranceState extends State<Entrance> {
          //onPressed:() => Navigator.pushNamed(context, '/chat') , 
          onPressed: (){
            setState(() {
-             
-             userName = inputcontroller.text;
-             if (inputcontroller.text == null) {
-              userName = 'LazyUser';
-             }      
+             // userName = inputcontroller.text;
+             if (inputcontroller.text == '') {
+              userName = "LazyUser";
+             }   else {
+                userName = inputcontroller.text;
+             }  
             Navigator.pushNamed(context, '/chat') ;
              } // setState
              );
