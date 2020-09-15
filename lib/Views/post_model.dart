@@ -1,16 +1,17 @@
 import 'package:flutter/foundation.dart';
+
 class Post {
-  final String userName;
-  final String userMessage;
+  final String name;
+  final String messagetext;
 Post({
-  @required this.userName,
-  @required this.userMessage,
+  @required this.name,
+  @required this.messagetext,
 });
 
 factory Post.fromJson(Map<String, dynamic> json){
   return Post(
-    userName: json['userName'] as String,
-    userMessage: json['userMessage'] as String,
+    name: json['name'] as String,
+    messagetext: json['messagetext'] as String,
   );
 }
 }

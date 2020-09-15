@@ -3,82 +3,52 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-Future<Album> fetchAlbum() async {
-  final response =
-      await http.get('http://pm.tada.team');
-
-  if (response.statusCode == 200) {
-    // If the server did return a 200 OK response,
-    // then parse the JSON.
-    return Album.fromJson(json.decode(response.body));
-  } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
-    throw Exception('Failed to load album');
-  }
+void man() {
+  runApp(MaterialApp(
+home: HomePage(),
+  )
+  );
 }
 
-class Album {
-  final int userId;
-  final int id;
-  final String title;
-
-  Album({this.userId, this.id, this.title});
-
-  factory Album.fromJson(Map<String, dynamic> json) {
-    return Album(
-      userId: json['userId'],
-      id: json['id'],
-      title: json['title'],
-    );
-  }
-}
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatefulWidget {
-  MyApp({Key key}) : super(key: key);
-
+class HomePage extends StatefulWidget{
   @override
-  _MyAppState createState() => _MyAppState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _MyAppState extends State<MyApp> {
-  Future<Album> futureAlbum;
-
+class _HomePageState extends State<HomePage> {
+  Map data;
+  List userData;
+  Future getData() async {
+    http.Response response = await http.get("http://127.0.0.1:55976/gTcAwDVx1l4=");
+    data = json.decode(response.body);
+    setState(() {
+      userData = data["data"];
+    });
+    debugPrint(userData.toString());
+  }
   @override
   void initState() {
     super.initState();
-    futureAlbum = fetchAlbum();
   }
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Fetch Data Example',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Another Test"),
+        backgroundColor: Colors.red,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Fetch Data Example'),
-        ),
-        body: Center(
-          child: FutureBuilder<Album>(
-            future: futureAlbum,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return Text(snapshot.data.title);
-              } else if (snapshot.hasError) {
-                return Text("${snapshot.error}");
-              }
+      body: ListView.builder(
+        itemCount: userData == null ? 0 : userData.length,
+        itemBuilder: (BuildContext context, int index) {
+         return Card(
+           child: Row(
+             children: <Widget> [
 
-              // By default, show a loading spinner.
-              return CircularProgressIndicator();
-            },
-          ),
-        ),
-      ),
+             ]
+           ),
+         );
+        },
+        )
     );
   }
 }
