@@ -20,20 +20,24 @@ class _ChatState extends State<Chat> {
 body: Container(
       child: Column (
         children: <Widget>[
-         
           Padding(
           padding: EdgeInsets.all(8.0),
           child: Row(
             children: <Widget>[
               Expanded(
-                child: TextField(
+                  child: Container(
+                    //padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                     child: TextField(  
                   controller: inputcontroller,
                   decoration: InputDecoration(
+                    
                    border: OutlineInputBorder(),
-                    hintText: 'Message'
+                    hintText: 'Message',
                   ),
                   style: TextStyle(fontSize: 20),
                 ),
+                   )
+               //)
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -42,15 +46,15 @@ body: Container(
                   style: TextStyle(fontSize: 20)
                 ),
                 onPressed: (){
-                  if (inputcontroller.text.isNotEmpty){
-                    print(inputcontroller.text);
+                //  if (inputcontroller.text.isNotEmpty){
+                 //   print(inputcontroller.text);
                     setState(() {
-                       messageList.add(value + ':');
-                       messageList.add(inputcontroller.text);
+
+                       messageList.add(value + ':' + inputcontroller.text);
                     });                 
-                    inputcontroller.text = '';
+                    //inputcontroller.text = '';
                   }
-                },
+              //  },
               ),
               )
             ],
@@ -65,7 +69,7 @@ body: Container(
     ) 
     );
   }
-    
+     
     
   ListView getMessageList(){
   List<Widget> listWidget = [];
