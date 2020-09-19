@@ -51,6 +51,7 @@ class _EntranceState extends State<Entrance> {
          
    RaisedButton(
      child: Text("Enter"),
+     
      onPressed:() => Navigator.of(context).push(MaterialPageRoute(
       builder: (context)=> Chat(value : userName),
      )
