@@ -1,12 +1,5 @@
-import 'package:Chat/Views/post_model.dart';
-import 'package:Chat/posts.dart';
 import 'package:flutter/material.dart';
 import './Views/Entrance.dart';
-import 'test_chat.dart';
-import './Views/chat.dart';
-import 'workingchat.dart';
-import 'finaltest.dart';
-
 
 void main() {
  runApp(Main());
@@ -21,10 +14,9 @@ class Main extends StatelessWidget {
         primarySwatch: Colors.red,
       ),
       debugShowCheckedModeBanner: false,
-         home:TestHttp(),
+         home:Entrance(),
          routes: {
-           '/entrance': (context) => TestHttp(),
-           //'/chat': (context) => Chat(value),
+           '/entrance': (context) => Entrance(),
          },
     );
   }

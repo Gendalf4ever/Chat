@@ -59,7 +59,6 @@ body: Container(
                 //  if (inputcontroller.text.isNotEmpty){
                  //   print(inputcontroller.text);
                     setState(() {
-
                        messageList.add(value + ':' + inputcontroller.text);
                     });                 
                     //inputcontroller.text = '';
