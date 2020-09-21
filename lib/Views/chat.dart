@@ -37,14 +37,15 @@ body: Container(
               Expanded(
                   child: Container(
                     //padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                    //padding: EdgeInsets.symmetric(horizontal: 24, vertical: 106),
                      child: TextField(  
                   controller: inputcontroller,
-                  decoration: InputDecoration(
-                    
+                  decoration: InputDecoration(                   
                    border: OutlineInputBorder(),
                     hintText: 'Message',
                   ),
                   style: TextStyle(fontSize: 20),
+                  //textAlign: TextAlign.end,
                 ),
                    )
                //)
@@ -56,12 +57,10 @@ body: Container(
                   style: TextStyle(fontSize: 20)
                 ),
                 onPressed: (){
-                //  if (inputcontroller.text.isNotEmpty){
-                 //   print(inputcontroller.text);
                     setState(() {
                        messageList.add(value + ':' + inputcontroller.text);
                     });                 
-                    //inputcontroller.text = '';
+                    inputcontroller.text = '';
                   }
               //  },
               ),
@@ -89,7 +88,7 @@ body: Container(
          padding: const EdgeInsets.all(8.0),
          child: Text(
            message,
-            style: TextStyle(fontSize: 22)
+            style: TextStyle(fontSize: 20)
          ),
        ),
      )

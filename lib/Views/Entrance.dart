@@ -29,14 +29,15 @@ class _EntranceState extends State<Entrance> {
            decoration: InputDecoration(
              border: InputBorder.none,
              hintText: 'Nickname:'
+          
            ),
+           
          ), 
          new Container(child: RaisedButton(
            child: Text('Save Nickname'), 
          //onPressed:() => Navigator.pushNamed(context, '/chat') , 
          onPressed: (){
            setState(() {
-             // userName = inputcontroller.text;
              if (inputcontroller.text == '') {
               userName = "LazyUser";
              }   else {
@@ -51,12 +52,11 @@ class _EntranceState extends State<Entrance> {
          
    RaisedButton(
      child: Text("Enter"),
-     
-     onPressed:() => Navigator.of(context).push(MaterialPageRoute(
+  
+     onPressed:() => Navigator.of(context).push(MaterialPageRoute( 
       builder: (context)=> Chat(value : userName),
      )
-     ) ,
-     
+     ) ,  
    )
 
    
