@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './Views/Entrance.dart';
+import './test.dart';
 
 void main() {
  runApp(Main());
@@ -14,9 +15,9 @@ class Main extends StatelessWidget {
         primarySwatch: Colors.red,
       ),
       debugShowCheckedModeBanner: false,
-         home:Entrance(),
+         home:Test(),
          routes: {
-           '/entrance': (context) => Entrance(),
+           '/entrance': (context) => Test(),
          },
     );
   }

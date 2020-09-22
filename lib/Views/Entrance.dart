@@ -34,8 +34,7 @@ class _EntranceState extends State<Entrance> {
            
          ), 
          new Container(child: RaisedButton(
-           child: Text('Enter'), 
-         //onPressed:() => Navigator.pushNamed(context, '/chat') , 
+           child: Text('Enter'),  
          onPressed: (){
            setState(() {
              if (inputcontroller.text == '') {
@@ -56,7 +55,6 @@ class _EntranceState extends State<Entrance> {
        ]
        )
        )
-       
     );
   
   

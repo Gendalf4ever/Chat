@@ -1,16 +1,17 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:web_socket_channel/io.dart';
-import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:http/http.dart' as http;
+import 'package:webview_flutter/webview_flutter.dart';
 class Chat extends StatefulWidget {
  String value;
   Chat({Key key, @required this.value}): super (key: key);
-   WebSocketChannel channel = IOWebSocketChannel.connect('wss://pm.tada.team/');
   @override
   _ChatState createState() => _ChatState(value);
+  
 }
 
 class _ChatState extends State<Chat> {
+  final Completer<WebViewController> _webcontroller = Completer<WebViewController>();
   httpGet() async {
   try{
 var response = await  http.post('http://pm.tada.team', body: {'websocket': 'ws', 'messagetext': 'message'}); //this is server
@@ -62,8 +63,17 @@ body: Container(
                     });                 
                     inputcontroller.text = '';
                   }
-              //  },
               ),
+              ),
+              Container(
+                child: WebView(
+                  initialUrl: "http://pm.tada.team",
+                  javascriptMode: JavascriptMode.unrestricted,
+                  onWebViewCreated: (WebViewController webcontroller){
+                    _webcontroller.complete(webcontroller);
+                    
+                  },
+                ),
               )
             ],
           ),
