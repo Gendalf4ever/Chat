@@ -34,7 +34,7 @@ class _EntranceState extends State<Entrance> {
            
          ), 
          new Container(child: RaisedButton(
-           child: Text('Save Nickname'), 
+           child: Text('Enter'), 
          //onPressed:() => Navigator.pushNamed(context, '/chat') , 
          onPressed: (){
            setState(() {
@@ -43,22 +43,15 @@ class _EntranceState extends State<Entrance> {
              }   else {
                 userName = inputcontroller.text;
              }  
-            Navigator.pushNamed(context, '/chat') ;
+            Navigator.of(context).push(MaterialPageRoute( 
+      builder: (context) => Chat(value : userName),
+     )
+     ) ;
              } // setState
              );
          },
        ),
        ),
-         
-   RaisedButton(
-     child: Text("Enter"),
-  
-     onPressed:() => Navigator.of(context).push(MaterialPageRoute( 
-      builder: (context)=> Chat(value : userName),
-     )
-     ) ,  
-   )
-
    
        ]
        )
