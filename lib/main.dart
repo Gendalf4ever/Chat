@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import './Views/Entrance.dart';
-import './test.dart';
-
 void main() {
  runApp(Main());
 }
-//http://127.0.0.1:55976/gTcAwDVx1l4=
 class Main extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -15,9 +12,9 @@ class Main extends StatelessWidget {
         primarySwatch: Colors.red,
       ),
       debugShowCheckedModeBanner: false,
-         home:Test(),
+         home:Entrance(),
          routes: {
-           '/entrance': (context) => Test(),
+           '/entrance': (context) => Entrance(),
          },
     );
   }

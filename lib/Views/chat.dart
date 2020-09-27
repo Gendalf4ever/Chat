@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:webview_flutter/webview_flutter.dart';
 class Chat extends StatefulWidget {
  String value;
   Chat({Key key, @required this.value}): super (key: key);
@@ -11,7 +10,15 @@ class Chat extends StatefulWidget {
 }
 
 class _ChatState extends State<Chat> {
-  final Completer<WebViewController> _webcontroller = Completer<WebViewController>();
+  Future<String> getData() async {
+  http.Response response = await http.get(
+Uri.encodeFull("https://jsonplaceholder.typicode.com/posts"),
+headers: {
+  "Accept": "application/json"
+}
+  );
+  print(response.body);
+}
   httpGet() async {
   try{
 var response = await  http.post('http://pm.tada.team', body: {'websocket': 'ws', 'messagetext': 'message'}); //this is server
@@ -62,19 +69,10 @@ body: Container(
                        messageList.add(value + ':' + inputcontroller.text);
                     });                 
                     inputcontroller.text = '';
+                  getData();
                   }
               ),
               ),
-              Container(
-                child: WebView(
-                  initialUrl: "http://pm.tada.team",
-                  javascriptMode: JavascriptMode.unrestricted,
-                  onWebViewCreated: (WebViewController webcontroller){
-                    _webcontroller.complete(webcontroller);
-                    
-                  },
-                ),
-              )
             ],
           ),
           
