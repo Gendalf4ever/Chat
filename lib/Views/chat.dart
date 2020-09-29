@@ -82,7 +82,7 @@ body: Container(
     listWidget.add(ListTile(
      title: Container(
        child: Padding(
-         padding: const EdgeInsets.all(8.0),
+         padding: const EdgeInsets.all(0.5),
          child: Text(
            message,
             style: TextStyle(fontSize: 20)
