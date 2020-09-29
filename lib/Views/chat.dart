@@ -12,21 +12,12 @@ class Chat extends StatefulWidget {
 class _ChatState extends State<Chat> {
   Future<String> getData() async {
   http.Response response = await http.get(
-Uri.encodeFull("https://jsonplaceholder.typicode.com/posts"),
+Uri.encodeFull("http://pm.tada.team"),
 headers: {
   "Accept": "application/json"
 }
   );
   print(response.body);
-}
-  httpGet() async {
-  try{
-var response = await  http.post('http://pm.tada.team', body: {'websocket': 'ws', 'messagetext': 'message'}); //this is server
-  print("Response status: ${response.statusCode}"); //return status
- print("Response body: ${response.body}"); //return html code
-  }catch (error ){
-  print("Error: $error");
-  } 
 }
   String value;
     final inputcontroller = TextEditingController();
@@ -45,7 +36,7 @@ body: Container(
               Expanded(
                   child: Container(
                     //padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                    //padding: EdgeInsets.symmetric(horizontal: 24, vertical: 106),
+                    padding: EdgeInsets.symmetric(horizontal: 24, vertical: 506),
                      child: TextField(  
                   controller: inputcontroller,
                   decoration: InputDecoration(                   
@@ -60,10 +51,8 @@ body: Container(
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: RaisedButton(
-                  child: Text('Send',
-                  style: TextStyle(fontSize: 20)
-                ),
+                child: IconButton(
+                  icon: Icon(Icons.send),
                 onPressed: (){
                     setState(() {
                        messageList.add(value + ':' + inputcontroller.text);
