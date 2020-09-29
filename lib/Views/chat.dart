@@ -36,7 +36,7 @@ body: Container(
               Expanded(
                   child: Container(
                     //padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                    padding: EdgeInsets.symmetric(horizontal: 24, vertical: 506),
+                    //padding: EdgeInsets.symmetric(horizontal: 24, vertical: 506),
                      child: TextField(  
                   controller: inputcontroller,
                   decoration: InputDecoration(                   
@@ -44,15 +44,15 @@ body: Container(
                     hintText: 'Message',
                   ),
                   style: TextStyle(fontSize: 20),
-                  //textAlign: TextAlign.end,
                 ),
                    )
-               //)
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: IconButton(
                   icon: Icon(Icons.send),
+                  iconSize: 50.0,
+                  color: Colors.red,   
                 onPressed: (){
                     setState(() {
                        messageList.add(value + ':' + inputcontroller.text);
