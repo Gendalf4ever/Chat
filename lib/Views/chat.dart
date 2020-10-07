@@ -5,6 +5,7 @@ import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 class Chat extends StatefulWidget {
   final WebSocketChannel channel = IOWebSocketChannel.connect('wss://nane.tada.team/ws?username={username}');
+
  String value;
   Chat({Key key, @required this.value}): super (key: key);
   @override
@@ -13,8 +14,12 @@ class Chat extends StatefulWidget {
 }
 
 class _ChatState extends State<Chat> {
+Future<String> data(){
+  final WebSocketChannel channel = IOWebSocketChannel.connect('wss://nane.tada.team/ws?username={username}');
+  print(channel);
+}
+
   Future<String> getData() async {
-  
   http.Response response = await http.get(
 Uri.encodeFull("http://pm.tada.team"),
 headers: {
@@ -49,6 +54,7 @@ body: Container(
                   decoration: InputDecoration(                   
                    border: OutlineInputBorder(),
                     hintText: 'Message',
+                    
                   ),
                   style: TextStyle(fontSize: 20),
                 ),
@@ -65,7 +71,8 @@ body: Container(
                        messageList.add(value + ':' + inputcontroller.text);
                     });                 
                     inputcontroller.text = '';
-                  getData();
+                  //getData();
+                  data();
                   }
               ),
               ),
@@ -103,5 +110,4 @@ return ListView(
   children:listWidget,
 );
 }
-
 }

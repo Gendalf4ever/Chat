@@ -13,9 +13,9 @@ class Main extends StatelessWidget {
         primarySwatch: Colors.red,
       ),
       debugShowCheckedModeBanner: false,
-         home:WebSocketTest(),
+         home:Entrance(),
          routes: {
-           '/entrance': (context) => WebSocketTest(),
+           '/entrance': (context) => Entrance(),
          },
     );
   }
