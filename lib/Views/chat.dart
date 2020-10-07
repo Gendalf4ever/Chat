@@ -1,7 +1,10 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:web_socket_channel/io.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
 class Chat extends StatefulWidget {
+  final WebSocketChannel channel = IOWebSocketChannel.connect('wss://nane.tada.team/ws?username={username}');
  String value;
   Chat({Key key, @required this.value}): super (key: key);
   @override
@@ -11,6 +14,7 @@ class Chat extends StatefulWidget {
 
 class _ChatState extends State<Chat> {
   Future<String> getData() async {
+  
   http.Response response = await http.get(
 Uri.encodeFull("http://pm.tada.team"),
 headers: {
@@ -20,6 +24,9 @@ headers: {
   print(response.body);
 }
   String value;
+
+   
+
     final inputcontroller = TextEditingController();
   _ChatState(this.value);
   List<String> messageList = [];
