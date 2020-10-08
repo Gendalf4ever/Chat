@@ -12,7 +12,25 @@ class Chat extends StatefulWidget {
   _ChatState createState() => _ChatState(value);
   
 }
+//GET https://nane.tada.team/api/rooms/{name}/history
 
+
+/* 
+{
+  "room": string, // название комнаты. Если такой комнаты нет, она будет создана
+  "text": string, // текст сообщения
+  "id": string // необязательный идентификатор, можно назначить на клиенте, чтобы получить подтверждение получения сообщения сервером
+}
+
+
+{
+  "room": string,
+  "text": string,
+  "id": string,
+  "created": iso_datetime, // время создания сообщения 
+  "sender": {"username": string} // информация об отправителе  
+}
+*/
 class _ChatState extends State<Chat> {
 Future<String> data(){
   final WebSocketChannel channel = IOWebSocketChannel.connect('wss://nane.tada.team/ws?username={username}');
