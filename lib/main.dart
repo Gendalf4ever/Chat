@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import './Views/Entrance.dart';
-import './Views/websockettest.dart';
+import './Views/post.dart';
 void main() {
  runApp(Main());
 }
@@ -13,9 +13,9 @@ class Main extends StatelessWidget {
         primarySwatch: Colors.red,
       ),
       debugShowCheckedModeBanner: false,
-         home:Entrance(),
+         home:MyApp(),
          routes: {
-           '/entrance': (context) => Entrance(),
+           '/entrance': (context) => MyApp(),
          },
     );
   }
